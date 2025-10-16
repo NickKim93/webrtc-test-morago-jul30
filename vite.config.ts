@@ -10,10 +10,10 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     proxy: {
-      '/auth': { target: 'http://localhost:8091', changeOrigin: true },
-      '/call': { target: 'http://localhost:8091', changeOrigin: true },
-      '/ws-native': { target: 'ws://localhost:8091', ws: true, changeOrigin: true },
-      '/ws':        { target: 'http://localhost:8091', ws: true, changeOrigin: true }, // SockJS (optional)
+      '/auth': { target: 'http://localhost:80980', changeOrigin: true },
+      '/call': { target: 'http://localhost:8080', changeOrigin: true },
+      '/ws-native': { target: 'ws://localhost:8080', ws: true, changeOrigin: true },
+      '/ws':        { target: 'http://localhost:8080', ws: true, changeOrigin: true }, // SockJS (optional)
     },
   },
 })
