@@ -160,7 +160,7 @@ export default function WebRtcTest() {
       payload.themeId = themeValue;
     }
 
-    const res = await fetch(`${API_BASE}/call/initiate`, {
+    const res = await fetch(`${API_BASE}/call/create`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: JSON.stringify(payload),
@@ -203,6 +203,8 @@ export default function WebRtcTest() {
   const onCallNotif = (msg: IMessage) => {
     const payload = safeParse(msg.body);
     if (!payload) return;
+    client.subscribe("/user/queue/call-notifications", onCallNotif);
+
     if (payload.callId) setCallId(String(payload.callId));
     const other =
       payload.otherParticipant ??
